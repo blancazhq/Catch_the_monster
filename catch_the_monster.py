@@ -122,7 +122,7 @@ def main():
     global play_again, level_counter
     play_again = False
     # declare the size of the canvas
-    background_image = pygame.image.load('../images/background.png')
+    background_image = pygame.image.load('images/background.png')
 
     x,y,width,height = background_image.get_rect()
     blue_color = (97, 159, 182)
@@ -132,22 +132,22 @@ def main():
     pygame.display.set_caption('Simple Example')
     clock = pygame.time.Clock()
     tick = clock.tick()
-    game_music = pygame.mixer.Sound('../sounds/music.wav')
+    game_music = pygame.mixer.Sound('sounds/music.wav')
 
     characters = []
 
     # Game initialization
-    hero_image = pygame.image.load('../images/hero.png').convert_alpha()
+    hero_image = pygame.image.load('images/hero.png').convert_alpha()
     hero = Hero(hero_image,screen)
     characters.append(hero)
 
-    monster_image = pygame.image.load('../images/monster.png').convert_alpha()
+    monster_image = pygame.image.load('images/monster.png').convert_alpha()
     monster = Monster(monster_image,screen,characters)
     characters.append(monster)
 
     num_goblins = 3 + level_counter - 1
     goblins = []
-    goblin_image = pygame.image.load('../images/goblin.png').convert_alpha()
+    goblin_image = pygame.image.load('images/goblin.png').convert_alpha()
     for i in xrange(num_goblins):
         goblin = Goblin(goblin_image,screen,characters)
         characters.append(goblin)
@@ -193,14 +193,14 @@ def main():
 
         if overlap(hero, monster):
             stop_game = True
-            sound = pygame.mixer.Sound('../sounds/win.wav')
+            sound = pygame.mixer.Sound('sounds/win.wav')
             sound.play()
             end_condition = 'win'
 
         for i in goblins:
             if overlap(hero, i):
                 stop_game = True
-                sound = pygame.mixer.Sound('../sounds/lose.wav')
+                sound = pygame.mixer.Sound('sounds/lose.wav')
                 sound.play()
                 end_condition = 'lose'
 
